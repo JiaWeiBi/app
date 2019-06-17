@@ -5,6 +5,24 @@
         <p class="some-info">第{{props.index+1}}张图片</p>
         <p class="some-info">{{props.value.info}}</p>
       </div>
+      <div class="box-content" slot-scope="props">
+        <div class="content">
+          <span class="post">Web designer</span>
+          <h3 class="title">Williamson</h3>
+        </div>
+        <ul class="icon">
+          <li>
+            <a href="#">
+              <i class="fa fa-search"></i>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <i class="fa fa-link"></i>
+            </a>
+          </li>
+        </ul>
+      </div>
     </vue-waterfall-easy>
   </div>
 </template>
