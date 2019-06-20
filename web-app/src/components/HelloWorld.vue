@@ -1,27 +1,15 @@
 <template>
   <div style="weight:100%;height:100%">
     <vue-waterfall-easy :imgsArr="imgsArr" @scrollReachBottom="getData">
-      <div class="img-info" slot-scope="props">
-        <p class="some-info">第{{props.index+1}}张图片</p>
-        <p class="some-info">{{props.value.info}}</p>
-      </div>
-      <div class="box-content" slot-scope="props">
-        <div class="content">
-          <span class="post">Web designer</span>
-          <h3 class="title">Williamson</h3>
+      <div class="img-info" slot-scope="props" style="overflow: hidden;">
+        <div class="box">
+          <div class="box-content">
+            <div class="content">
+              <p class="some-info">第{{props.index+1}}张图片</p>
+              <p class="some-info">{{props.value.info || "hahahah"}}</p>
+            </div>
+          </div>
         </div>
-        <ul class="icon">
-          <li>
-            <a href="#">
-              <i class="fa fa-search"></i>
-            </a>
-          </li>
-          <li>
-            <a href="#">
-              <i class="fa fa-link"></i>
-            </a>
-          </li>
-        </ul>
       </div>
     </vue-waterfall-easy>
   </div>
@@ -76,4 +64,28 @@ export default {
 </script>
 
 <style>
+.img-inner-box {
+  overflow: hidden;
+}
+
+.box-content:after {
+  content: "";
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+  transform: translateY(-100%);
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  bottom: 10px;
+  right: 10px;
+  z-index: 1;
+  display:none;
+  transition: all 0.3s;
+}
+
+
+.img-inner-box:hover .box-content:after{
+  display: inline;
+	transform: translateY(0);
+}
+
 </style>
