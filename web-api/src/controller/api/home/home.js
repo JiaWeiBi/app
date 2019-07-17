@@ -1,8 +1,12 @@
-const Base = require('./base.js');
+const Base = require('../base.js');
 module.exports = class extends Base {
     async indexAction() {
         const conent = this.mongo('content2');
         const data = await conent.page(1, 20).select();
         this.body = {data};
+    }
+
+    async testAction() {
+        this.success("this is a test!")
     }
 }
