@@ -7,6 +7,8 @@ module.exports = class extends Base {
     }
 
     async testAction() {
-        this.success("this is a test!")
+        const conent = this.mongo('content2');
+        const data = await conent.where({commentId: "235471322"}).select();
+        this.success(data)
     }
 }
