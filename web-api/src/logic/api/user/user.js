@@ -1,7 +1,5 @@
-module.exports = class extends think.Logic {
-   __before() {
-      // todo
-   }
+const baseLogic = require('../baseLogic');
+module.exports = class extends baseLogic {
    signUpAction() {
       this.allowMethods = 'post';
       const rules = {
@@ -31,7 +29,7 @@ module.exports = class extends think.Logic {
          return this.fail('validate error', this.validateErrors);
        }
    }
-   loginInAction() {
+   loginAction() {
       this.allowMethods = 'post';
       this.rules = {
          email: {
