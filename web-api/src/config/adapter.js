@@ -75,7 +75,9 @@ exports.session = {
   },
   file: {
     handle: fileSession,
-    sessionPath: path.join(think.ROOT_PATH, 'runtime/session')
+    sessionPath: path.join(think.ROOT_PATH, 'runtime/session'),
+    maxAge: 5 * 1000,
+    autoUpdate: true
   }
 };
 
