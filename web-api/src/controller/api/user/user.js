@@ -18,7 +18,25 @@ module.exports = class extends Base {
     }
 
     async loginAction() { 
-        this.success(this.post());
+        const params = this.post();
+        const userModel = this.mongo('user');
+        const data = await userModel.getUserByEmail(params.email);
+        
+        if(data.psw != params.psw){
+            this.fail("密码错误")
+        }else{
+            this.session('userInfo', {...data})
+            delete data.psw;
+            delete data._id;
+            this.success(data);
+        }
+    }
+
+    async logoutAction() {
+        const userInfo = this.session('userInfo');
+        if (think.isEmpty(userInfo)) {
+            this.success('已退出登录')
+        }
     }
 
     async checkNickNameAction(){

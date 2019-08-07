@@ -43,4 +43,5 @@ module.exports = class extends baseLogic {
          }
       }
    }
+   logoutAction() {}
 }
