@@ -12,6 +12,9 @@
         </div>
       </div>
     </vue-waterfall-easy>
+    <div class="ch">凉风有信，秋月无边。思娇情绪好比度日如年。小生缪姓莲仙字，为忆多情妓女麦氏秋娟。见渠声色性情人赞羡，更兼才貌的确两相全。今日天隔一方难见面，是以孤舟沉寂晚景凉天。你睇斜阳照住个对双飞燕，独倚蓬窗思悄然。
+
+　　耳畔听得秋声桐叶落，又只见平桥衰柳锁寒烟。第一触景更添情懊恼，亏你怀人愁对月华圆。旧约难如潮有信，新愁似海无边。亏我情绪悲秋同宋玉，况且在客途抱恨你话对乜谁言。记得青楼邂逅个晚中秋夜，我共你并肩携手拜月婵娟。我亦记不尽许多情与义，真正缠绵相爱又复相怜。共你肝胆情投将有两个月，唔想同群催趱要整归鞭。</div>
   </div>
 </template>
 
@@ -78,14 +81,16 @@ export default {
   bottom: 10px;
   right: 10px;
   z-index: 1;
-  display:none;
+  display: none;
   transition: all 0.3s;
 }
 
-
-.img-inner-box:hover .box-content:after{
+.img-inner-box:hover .box-content:after {
   display: inline;
-	transform: translateY(0);
+  transform: translateY(0);
 }
 
+.ch {
+  font-family: "wanghanzhongzhongxing";
+}
 </style>
