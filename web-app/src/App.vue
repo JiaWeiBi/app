@@ -1,14 +1,12 @@
 <template>
   <v-app class='app'>
-    <v-toolbar app>
+    <!-- <v-toolbar app>
       <v-toolbar-title class="ch">
         <span>最完美的故事就是由你亲手写下结局</span>
       </v-toolbar-title>
       <v-spacer></v-spacer>
-      <!-- <v-btn flat href="https://github.com/vuetifyjs/vuetify/releases/latest" target="_blank">
-        <span class="ch">最完美的故事就是由你亲手写下结局</span>
-      </v-btn> -->
-    </v-toolbar>
+      
+    </v-toolbar> -->
 
     <v-content>
       <router-view/>
@@ -32,7 +30,10 @@ export default {
 .app {
   background: #f4f4f4;
 }
-
+.ch {
+  font-family: "FZZJ-ZSXKJW";
+  font-size:25px;
+}
 @font-face {
   font-family: 'HYLiGuoXingXingKaiW';
   src: url('./assets/fonts/HYLiGuoXingXingKaiW.ttf') format('truetype');
@@ -54,10 +55,6 @@ export default {
 @font-face {
   font-family: 'FZZJ-ZMJXLBXSJW';
   src: url('./assets/fonts/FZZJ-ZMJXLBXSJW.TTF') format('truetype');
-}
-@font-face {
-  font-family: 'FZZJ-ZSXKJW';
-  src: url('./assets/fonts/FZZJ-ZSXKJW.TTF') format('truetype');
 }
 
 @font-face {

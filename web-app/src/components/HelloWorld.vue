@@ -88,8 +88,8 @@ export default {
   transform: translateY(0);
 }
 
-.ch {
+/* .ch {
   font-family: "anjingchenxingshu";
   font-size:25px;
-}
+} */
 </style>
