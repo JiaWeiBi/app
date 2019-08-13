@@ -1,11 +1,11 @@
 <template>
-  <v-container>
-    <v-layout>
-      <v-flex>
+  <v-container fluid>
+    <v-layout wrap>
+      <v-flex xs10 offset-xs1>
         <div class="ch">
 
-          <span>最完美的故事</span>
-          <span>就是由你亲手写下结局</span>
+          <span>最完美的故事
+          <br />就是由你亲手写下结局</span>
         </div>
       </v-flex>
       <v-flex>
