@@ -1,22 +1,13 @@
 <template>
   <nav>
-    <v-app-bar app prominent flat dense color="teal lighten-3">
+    <v-app-bar app color="teal lighten-3">
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" class="grey--text"></v-app-bar-nav-icon>
-
-      <v-toolbar-title>
-        <!-- <div class="ch">最完美的故事</div> -->
-        <v-spacer></v-spacer>
-        <div class="ch">最完美的故事就是由你亲手写下结局</div>
-      </v-toolbar-title>
-
+      <v-toolbar-title class="ch">最完美的故事就是由你亲手写下结局</v-toolbar-title>
+   
       <v-spacer></v-spacer>
 
       <v-btn icon>
         <v-icon>mdi-magnify</v-icon>
-      </v-btn>
-
-      <v-btn icon>
-        <v-icon>mdi-filter</v-icon>
       </v-btn>
 
       <v-btn icon>
@@ -45,5 +36,9 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.ch {
+  font-family: "FZZJ-ZMJXLBXSJW";
+  font-size: 2vw;
+}
 </style>

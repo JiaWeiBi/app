@@ -23,10 +23,7 @@ export default {
 </script>
 
 <style>
-.ch {
-  font-family: "FZZJ-ZMJXLBXSJW";
-  font-size: 2vw;
-}
+
 @font-face {
   font-family: "HYLiGuoXingXingKaiW";
   src: url("./assets/fonts/HYLiGuoXingXingKaiW.ttf") format("truetype");
