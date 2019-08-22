@@ -3,10 +3,25 @@
     <h1 class="subheading grey--text">Dashboard</h1>
 
     <v-container class="my-5">
-
-    
+      <waterfall :data="data" :col="5" :width="150" :gutterWidth="gutterWidth" @loadmore="loadmore" @scroll="scroll">
+        <template>
+          <div class="cell-item" v-for="(item,index) in data" :key="index">
+            <img v-if="item.img" :src="item.img" alt="加载错误" />
+            <div class="item-body">
+              <div class="item-desc">{{item.title}}</div>
+              <div class="item-footer">
+                <div class="avatar" :style="{backgroundImage : `url(${item.avatar})` }"></div>
+                <div class="name">{{item.user}}</div>
+                <div class="like" :class="item.liked?'active':''">
+                  <i></i>
+                  <div class="like-total">{{item.liked}}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </template>
+      </waterfall>
     </v-container>
-   
   </div>
 </template>
 
@@ -14,41 +29,65 @@
 export default {
   data() {
     return {
-      projects: [
-        { title: 'Design a new website', person: 'The Net Ninja', due: '1st Jan 2019', status: 'ongoing', content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt consequuntur eos eligendi illum minima adipisci deleniti, dicta mollitia enim explicabo fugiat quidem ducimus praesentium voluptates porro molestias non sequi animi!'},
-        { title: 'Code up the homepage', person: 'Chun Li', due: '10th Jan 2019', status: 'complete', content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt consequuntur eos eligendi illum minima adipisci deleniti, dicta mollitia enim explicabo fugiat quidem ducimus praesentium voluptates porro molestias non sequi animi!'},
-        { title: 'Design video thumbnails', person: 'Ryu', due: '20th Dec 2018', status: 'complete', content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt consequuntur eos eligendi illum minima adipisci deleniti, dicta mollitia enim explicabo fugiat quidem ducimus praesentium voluptates porro molestias non sequi animi!'},
-        { title: 'Create a community forum', person: 'Gouken', due: '20th Oct 2018', status: 'overdue', content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt consequuntur eos eligendi illum minima adipisci deleniti, dicta mollitia enim explicabo fugiat quidem ducimus praesentium voluptates porro molestias non sequi animi!'},
+      data: [
+        {
+          img: "https://p3.music.126.net/jwRMEy3eouDAZnaUTuGuMQ==/3265549536774639.jpg",
+          title: "test"
+        },
+        {
+          img: "https://p3.music.126.net/jwRMEy3eouDAZnaUTuGuMQ==/3265549536774639.jpg",
+          title: "test"
+        },
+        {
+          img: "https://p3.music.126.net/jwRMEy3eouDAZnaUTuGuMQ==/3265549536774639.jpg",
+          title: "test"
+        },
+        {
+          img: "https://p3.music.126.net/jwRMEy3eouDAZnaUTuGuMQ==/3265549536774639.jpg",
+          title: "test"
+        },
+        {
+          img: "https://p3.music.126.net/jwRMEy3eouDAZnaUTuGuMQ==/3265549536774639.jpg",
+          title: "test"
+        },
+        {
+          img: "https://p3.music.126.net/jwRMEy3eouDAZnaUTuGuMQ==/3265549536774639.jpg",
+          title: "test"
+        },
+        {
+          img: "https://p3.music.126.net/jwRMEy3eouDAZnaUTuGuMQ==/3265549536774639.jpg",
+          title: "test"
+        },
+        {
+          img: "https://p3.music.126.net/jwRMEy3eouDAZnaUTuGuMQ==/3265549536774639.jpg",
+          title: "test"
+        },
+        {
+          img: "https://p3.music.126.net/jwRMEy3eouDAZnaUTuGuMQ==/3265549536774639.jpg",
+          title: "test"
+        }
       ]
-    }
+    };
   },
+  computed:{
+          itemWidth(){  
+                return (138*0.5*(document.documentElement.clientWidth/375)) 
+          },
+          gutterWidth(){
+                return (9*0.5*(document.documentElement.clientWidth/375))  
+          }
+        },
   methods: {
-    sortBy(prop) {
-      this.projects.sort((a,b) => a[prop] < b[prop] ? -1 : 1)
+    scroll() {
+      // console.log(scrollData);
+    },
+    loadmore() {
+      alert('test')
+      this.data = this.data.concat(this.data);
     }
   }
-}
+};
 </script>
 
 <style>
-
-.project.complete{
-  border-left: 4px solid #3cd1c2;
-}
-.project.ongoing{
-  border-left: 4px solid #ffaa2c;
-}
-.project.overdue{
-  border-left: 4px solid #f83e70;
-}
-.v-chip.complete{
-  background: #3cd1c2;
-}
-.v-chip.ongoing{
-  background: #ffaa2c;
-}
-.v-chip.overdue{
-  background: #f83e70;
-}
-
 </style>
