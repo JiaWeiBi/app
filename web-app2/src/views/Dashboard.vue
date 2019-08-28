@@ -1,93 +1,138 @@
 <template>
-  <div class="dashboard">
+  <div class="dashboard" style="height:100%;">
     <h1 class="subheading grey--text">Dashboard</h1>
 
-    <v-container class="my-5">
-      <waterfall :data="data" :col="5" :width="150" :gutterWidth="gutterWidth" @loadmore="loadmore" @scroll="scroll">
-        <template>
-          <div class="cell-item" v-for="(item,index) in data" :key="index">
-            <img v-if="item.img" :src="item.img" alt="加载错误" />
-            <div class="item-body">
-              <div class="item-desc">{{item.title}}</div>
-              <div class="item-footer">
-                <div class="avatar" :style="{backgroundImage : `url(${item.avatar})` }"></div>
-                <div class="name">{{item.user}}</div>
-                <div class="like" :class="item.liked?'active':''">
-                  <i></i>
-                  <div class="like-total">{{item.liked}}</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </template>
-      </waterfall>
-    </v-container>
+    <waterFall v-on:load-more="loadMore">
+      <template v-slot:content>
+        <Card v-for="(item,index) in imgsArr" :item="item" :key="index" class="card"></Card>
+      </template>
+    </waterFall>
+    <!-- <v-container class="my-5" fill-height>
+      <div class="waterfall" fill-height>
+        <Card v-for="(item,index) in imgsArr" :item="item" :key="index" class="card"></Card>
+      </div>
+    </v-container>-->
   </div>
 </template>
 
 <script>
+import Card from "../components/ContentCard";
+import waterFall from "../components/waterFall";
+
 export default {
   data() {
     return {
-      data: [
+      imgsArr: [
         {
-          img: "https://p3.music.126.net/jwRMEy3eouDAZnaUTuGuMQ==/3265549536774639.jpg",
-          title: "test"
+          content:
+            "“后期，如果LPR利率下调，根据央行的这一规定，首套、二套房贷的最低利率自然也会随之下调，但是需要注意的是，这仅指最低利率，实际发放的利率还会受调控政策、银行信贷资源的影响，预计执行利率短期内很难出现显著的、普遍性下降。”李万斌坦言。"
+        },
+        {},
+        {},
+        {},
+        {},
+        {},
+        {
+          content:
+            "“后期，如果LPR利率下调，根据央行的这一规定，首套、二套房贷的最低利率自然也会随之下调，但是需要注意的是，这仅指最低利率，实际发放的利率还会受调控政策、银行信贷资源的影响，预计执行利率短期内很难出现显著的、普遍性下降。”李万斌坦言。"
+        },
+        {},
+        {},
+        {},
+        {},
+        {},
+        {
+          content:
+            "“后期，如果LPR利率下调，根据央行的这一规定，首套、二套房贷的最低利率自然也会随之下调，但是需要注意的是，这仅指最低利率，实际发放的利率还会受调控政策、银行信贷资源的影响，预计执行利率短期内很难出现显著的、普遍性下降。”李万斌坦言。"
+        },
+        {},
+        {},
+        {},
+        {},
+        {},
+        {},
+        {
+          content:
+            "“后期，如果LPR利率下调，根据央行的这一规定，首套、二套房贷的最低利率自然也会随之下调."
         },
         {
-          img: "https://p3.music.126.net/jwRMEy3eouDAZnaUTuGuMQ==/3265549536774639.jpg",
-          title: "test"
+          content:
+            "“后期，如果LPR利率下调，根据央行的这一规定，首套、二套房贷的最低利率自然也会随之下调，但是需要注意的是，这仅指最低利率，实际发放的利率还会受调控政策、银行信贷资源的影响，预计执行利率短期内很难出现显著的、普遍性下降。”李万斌坦言。"
+        },
+        {},
+        {
+          content:
+            "“后期，如果LPR利率下调，根据央行的这一规定，首套、二套房贷的最低利率自然也会随之下调."
         },
         {
-          img: "https://p3.music.126.net/jwRMEy3eouDAZnaUTuGuMQ==/3265549536774639.jpg",
-          title: "test"
+          content:
+            "“后期，如果LPR利率下调，根据央行的这一规定，首套、二套房贷的最低利率自然也会随之下调，但是需要注意的是，这仅指最低利率，实际发放的利率还会受调控政策、银行信贷资源的影响，预计执行利率短期内很难出现显著的、普遍性下降。”李万斌坦言。"
         },
         {
-          img: "https://p3.music.126.net/jwRMEy3eouDAZnaUTuGuMQ==/3265549536774639.jpg",
-          title: "test"
+          content:
+            "“后期，如果LPR利率下调，根据央行的这一规定，首套、二套房贷的最低利率自然也会随之下调，但是需要注意的是，这仅指最低利率，实际发放的利率还会受调控政策、银行信贷资源的影响，预计执行利率短期内很难出现显著的、普遍性下降。”李万斌坦言。"
+        },
+        {},
+        {
+          content:
+            "“后期，如果LPR利率下调，根据央行的这一规定，首套、二套房贷的最低利率自然也会随之下调."
         },
         {
-          img: "https://p3.music.126.net/jwRMEy3eouDAZnaUTuGuMQ==/3265549536774639.jpg",
-          title: "test"
+          content:
+            "“后期，如果LPR利率下调，根据央行的这一规定，首套、二套房贷的最低利率自然也会随之下调."
         },
         {
-          img: "https://p3.music.126.net/jwRMEy3eouDAZnaUTuGuMQ==/3265549536774639.jpg",
-          title: "test"
+          content:
+            "“后期，如果LPR利率下调，根据央行的这一规定，首套、二套房贷的最低利率自然也会随之下调."
         },
         {
-          img: "https://p3.music.126.net/jwRMEy3eouDAZnaUTuGuMQ==/3265549536774639.jpg",
-          title: "test"
-        },
-        {
-          img: "https://p3.music.126.net/jwRMEy3eouDAZnaUTuGuMQ==/3265549536774639.jpg",
-          title: "test"
-        },
-        {
-          img: "https://p3.music.126.net/jwRMEy3eouDAZnaUTuGuMQ==/3265549536774639.jpg",
-          title: "test"
+          content:
+            "“后期，如果LPR利率下调，根据央行的这一规定，首套、二套房贷的最低利率自然也会随之下调."
         }
       ]
     };
   },
-  computed:{
-          itemWidth(){  
-                return (138*0.5*(document.documentElement.clientWidth/375)) 
-          },
-          gutterWidth(){
-                return (9*0.5*(document.documentElement.clientWidth/375))  
-          }
-        },
+  created() {},
+  components: {
+    Card,
+    waterFall
+  },
+  computed: {},
   methods: {
-    scroll() {
-      // console.log(scrollData);
-    },
-    loadmore() {
-      alert('test')
-      this.data = this.data.concat(this.data);
+    loadMore() {
+      this.imgsArr = this.imgsArr.concat(this.imgsArr)
+      // alert("loadMore");
     }
   }
 };
 </script>
 
-<style>
+<style scoped>
+.waterfall {
+  column-gap: 10px;
+  column-count: 6;
+  width: 100%;
+}
+.card {
+  padding: 10px;
+  margin-bottom: 10px;
+  break-inside: avoid;
+}
+@media (min-width: 992px) and (max-width: 1300px) {
+  .waterfall {
+    column-count: 4;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .waterfall {
+    column-count: 3;
+  }
+}
+
+@media (max-width: 767px) {
+  .waterfall {
+    column-count: 1;
+  }
+}
 </style>

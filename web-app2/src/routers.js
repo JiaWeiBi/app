@@ -1,5 +1,5 @@
 import Dashboard from './views/Dashboard.vue'
-
+import Team from './views/Team'
 
 const routers = [
     {
@@ -11,11 +11,11 @@ const routers = [
       //   path: '/projects',
       //   name: 'projects',
       //   component: Projects
-      // },
-      // {
-      //   path: '/team',
-      //   name: 'team',
-      //   component: Team
+      },
+      {
+        path: '/team',
+        name: 'team',
+        component: Team
       }
 ]
 
