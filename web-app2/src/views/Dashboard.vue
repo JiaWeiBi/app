@@ -18,6 +18,7 @@
 <script>
 import Card from "../components/ContentCard";
 import waterFall from "../components/waterFall";
+import axios from "@/src/commen/request";
 
 export default {
   data() {
@@ -93,6 +94,9 @@ export default {
     };
   },
   created() {},
+  mounted() {
+    
+  },
   components: {
     Card,
     waterFall
@@ -100,7 +104,7 @@ export default {
   computed: {},
   methods: {
     loadMore() {
-      this.imgsArr = this.imgsArr.concat(this.imgsArr)
+      this.imgsArr = this.imgsArr.concat(this.imgsArr);
       // alert("loadMore");
     }
   }
