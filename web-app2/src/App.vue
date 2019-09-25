@@ -25,30 +25,30 @@ export default {
 <style>
 
 @font-face {
-  font-family: "HYLiGuoXingXingKaiW";
+  font-family: "font1";
   src: url("./assets/fonts/HYLiGuoXingXingKaiW.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: "fangzheng";
+  font-family: "font2";
   src: url("./assets/fonts/fangzheng.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: "FZQDJW";
+  font-family: "font3";
   src: url("./assets/fonts/FZQDJW.TTF") format("truetype");
 }
 @font-face {
-  font-family: "FZQTJW";
+  font-family: "font4";
   src: url("./assets/fonts/FZQTJW.TTF") format("truetype");
 }
 @font-face {
-  font-family: "FZZJ-ZMJXLBXSJW";
+  font-family: "font5";
   src: url("./assets/fonts/FZZJ-ZMJXLBXSJW.TTF") format("truetype");
 }
 
 @font-face {
-  font-family: "anjingchenxingshu";
+  font-family: "font6";
   src: url("./assets/fonts/anjingchenxingshu.otf");
 }
 </style>

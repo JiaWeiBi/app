@@ -32,7 +32,7 @@ export default {
 
 <style scoped>
 .ch {
-  font-family: "FZZJ-ZMJXLBXSJW";
+  font-family: "font5";
   font-size: 2vw;
 }
 @media (min-width: 992px) and (max-width: 1300px) {

@@ -7,18 +7,12 @@
         <Card v-for="(item,index) in dataList" :item="item" :key="index" class="card"></Card>
       </template>
     </waterFall>
-    <!-- <v-container class="my-5" fill-height>
-      <div class="waterfall" fill-height>
-        <Card v-for="(item,index) in imgsArr" :item="item" :key="index" class="card"></Card>
-      </div>
-    </v-container>-->
   </div>
 </template>
 
 <script>
 import Card from "../components/ContentCard";
 import waterFall from "../components/waterFall";
-// import axios from "../commen/request";
 
 export default {
   data() {

@@ -13,8 +13,8 @@ const routers = [
       //   component: Projects
       },
       {
-        path: '/team',
-        name: 'team',
+        path: '/story/:id',
+        name: 'story',
         component: Team
       }
 ]

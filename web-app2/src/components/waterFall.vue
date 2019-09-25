@@ -1,7 +1,6 @@
 <template>
   <v-container class="ma-0" fill-height fluid>
     <div class="waterfall" fill-height>
-      <!-- <Card v-for="(item,index) in imgsArr" :item="item" :key="index" class="card"></Card> -->
       <slot name="content"></slot>
     </div>
   </v-container>
