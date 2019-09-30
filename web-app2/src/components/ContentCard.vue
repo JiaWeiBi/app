@@ -34,7 +34,7 @@ export default {
   methods: {
     click() {
       this.$router.push({
-        path: `/story/${this.item.likedCount}`
+        path: `/story/${this.item._id}`
       });
     }
   }
