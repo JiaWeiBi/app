@@ -1,5 +1,5 @@
 import Dashboard from './views/Dashboard.vue'
-import Team from './views/Team'
+import Story from './views/Story'
 
 const routers = [
     {
@@ -15,7 +15,7 @@ const routers = [
       {
         path: '/story/:id',
         name: 'story',
-        component: Team
+        component: Story
       }
 ]
 

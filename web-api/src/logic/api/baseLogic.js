@@ -4,6 +4,7 @@ module.exports = class extends think.Logic {
             '/api/user/user/checkNickName'
             , '/api/user/user/signUp'
             , '/api/user/user/login'
+            , '/api/content/story/get'
         ];
         if (list.indexOf(this.ctx.path) != -1){
             return true;
