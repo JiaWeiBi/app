@@ -2,13 +2,16 @@
   <div>
     <h1 class="subheading grey--text">Story</h1>
     <div>
-    <v-avatar>
-      <img :src="data.user.avatarUrl" />
-    </v-avatar>
-    <span class="title font-weight-light">{{data.user.nickname}}</span>
-    <p>{{data.content}}</p>
-    
-  </div>
+      <div v-if="data && data.user">
+        <v-avatar>
+          <img :src="data.user.avatarUrl" />
+        </v-avatar>
+        <span class="title font-weight-light">{{data.user.nickname}}</span>
+      </div>
+      <div v-if="data && data.content">
+        <p>{{data.content}}</p>
+      </div>
+    </div>
   </div>
 </template>
 
