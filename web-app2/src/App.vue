@@ -3,7 +3,7 @@
     <Navbar />
 
     <v-content class="mx-4 mb-4">
-      <router-view></router-view>
+      <router-view :key="this.$route.path"></router-view>
     </v-content>
   </v-app>
 </template>

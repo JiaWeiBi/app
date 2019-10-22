@@ -1,16 +1,24 @@
 <template>
   <div>
-    <h1 class="subheading grey--text">Story</h1>
-    <div>
-      <div v-if="data && data.user">
-        <v-avatar>
-          <img :src="data.user.avatarUrl" />
-        </v-avatar>
-        <span class="title font-weight-light">{{data.user.nickname}}</span>
-      </div>
-      <div v-if="data && data.content">
-        <p>{{data.content}}</p>
-      </div>
+    <v-container>
+      <v-row>
+        <div v-if="data && data.user">
+          <v-avatar>
+            <img :src="data.user.avatarUrl" />
+          </v-avatar>
+          <strong v-html="data.user.nickname" style="padding: 10px"></strong>
+          <!-- <span class="title font-weight-light">{{data.user.nickname}}</span> -->
+        </div>
+      </v-row>
+      <v-row>
+        <div v-if="data && data.content">
+          <p>{{data.content}}</p>
+        </div>
+      </v-row>
+      <v-divider></v-divider>
+      <v-row v-for="(item,index) in follows" :item="item" :key="index">
+        <v-col></v-col>
+      </v-row>
       <div>
         <waterFall>
           <template v-slot:content>
@@ -18,7 +26,7 @@
           </template>
         </waterFall>
       </div>
-    </div>
+    </v-container>
   </div>
 </template>
 
