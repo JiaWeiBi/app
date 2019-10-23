@@ -16,16 +16,23 @@
         </div>
       </v-row>
       <v-divider></v-divider>
-      <v-row v-for="(item,index) in follows" :item="item" :key="index">
-        <v-col></v-col>
-      </v-row>
-      <div>
-        <waterFall>
-          <template v-slot:content>
-            <Card v-for="(item,index) in follows" :item="item" :key="index" class="card"></Card>
-          </template>
-        </waterFall>
-      </div>
+      <v-list three-line>
+        <template v-for="(item,index) in follows">
+          <v-list-item
+          :key="item.title"
+        >
+          <v-list-item-avatar>
+            <v-img :src="item.user.avatarUrl"></v-img>
+          </v-list-item-avatar>
+
+          <v-list-item-content>
+            <v-list-item-title v-html="item.user.nickname"></v-list-item-title>
+            <v-list-item-subtitle v-html="item.content"></v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
+        <v-divider :key="index" :insert="item.insert || true"></v-divider>
+        </template>
+      </v-list>
     </v-container>
   </div>
 </template>
