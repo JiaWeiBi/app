@@ -20,6 +20,8 @@
         <template v-for="(item,index) in follows">
           <v-list-item
           :key="item.title"
+          link
+          :href="item.commentId"
         >
           <v-list-item-avatar>
             <v-img :src="item.user.avatarUrl"></v-img>
@@ -58,7 +60,7 @@ export default {
       .then(res => {
         this.data = res.data.data.data;
         this.follows = res.data.data.followList;
-        // console.log("=====", res);
+        console.log("=====", res);
       });
   }
 };
