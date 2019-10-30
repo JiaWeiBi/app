@@ -18,23 +18,22 @@
       <v-divider></v-divider>
       <v-list three-line>
         <template v-for="(item,index) in follows">
-          <v-list-item
-          :key="item.title"
-          link
-          :href="item.commentId"
-        >
-          <v-list-item-avatar>
-            <v-img :src="item.user.avatarUrl"></v-img>
-          </v-list-item-avatar>
+          <v-list-item :key="item.title" link :href="item.commentId">
+            <v-list-item-avatar>
+              <v-img :src="item.user.avatarUrl"></v-img>
+            </v-list-item-avatar>
 
-          <v-list-item-content>
-            <v-list-item-title v-html="item.user.nickname"></v-list-item-title>
-            <v-list-item-subtitle v-html="item.content"></v-list-item-subtitle>
-          </v-list-item-content>
-        </v-list-item>
-        <v-divider :key="index" :insert="item.insert || true"></v-divider>
+            <v-list-item-content>
+              <v-list-item-title v-html="item.user.nickname"></v-list-item-title>
+              <v-list-item-subtitle v-html="item.content"></v-list-item-subtitle>
+            </v-list-item-content>
+          </v-list-item>
+          <v-divider :key="index" :insert="item.insert || true"></v-divider>
         </template>
       </v-list>
+      <v-container class="max-width">
+        <v-pagination v-model="page" class="my-4" :length="total" :total-visible="7" circle @input="pageInput"></v-pagination>
+      </v-container>
     </v-container>
   </div>
 </template>
@@ -47,7 +46,10 @@ export default {
     return {
       actionUrl: "/api/content/story/get",
       data: null,
-      follows: []
+      follows: [],
+      page: 1,
+      perPage: 10,
+      total: 10
     };
   },
   components: {
@@ -55,13 +57,28 @@ export default {
     waterFall
   },
   mounted: function() {
-    this.axios
-      .get(this.actionUrl, { params: { id: this.$route.params.id } })
+    // this.axios
+    //   .get(this.actionUrl, { params: { id: this.$route.params.id } })
+    //   .then(res => {
+    //     this.data = res.data.data.data;
+    //     this.follows = res.data.data.followList;
+    //     // console.log("=====", res);
+    //   });
+    this.doSearch();
+  },
+  methods: {
+    doSearch(){
+      this.axios
+      .get(this.actionUrl, { params: { id: this.$route.params.id , page: this.page, perPage: this.perPage} })
       .then(res => {
         this.data = res.data.data.data;
         this.follows = res.data.data.followList;
-        console.log("=====", res);
+        // console.log("=====", res);
       });
+    },
+    pageInput(page){
+      this.doSearch();
+    }
   }
 };
 </script>
