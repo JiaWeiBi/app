@@ -1,6 +1,6 @@
 <template>
   <div class="dashboard" style="height:100%;">
-    <h1 class="subheading grey--text">Dashboard</h1>
+    <!-- <h1 class="subheading grey--text">Dashboard</h1> -->
 
     <waterFall v-on:load-more="loadMore">
       <template v-slot:content>

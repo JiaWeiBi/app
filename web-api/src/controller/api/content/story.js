@@ -6,17 +6,20 @@ module.exports = class extends Base {
     }
 
     async getAction() {
-        const id = this.get('id');
+        const params = this.get();
         const conent = this.mongo('content2');
-        const data = await conent.where({commentId: id}).find();
+        
+        const data = await conent.where({commentId: params.id}).find();
 
-        const followList = await conent.where({
+        const followData = await conent.where({
             beReplied:{
                 $elemMatch: {
-                    beRepliedCommentId: parseInt(id)
+                    beRepliedCommentId: parseInt(params.id)
                 }
             }
-        }).select();
-        this.success({data, followList});
+        }).page(
+            params.page,params.perPage
+        ).countSelect();
+        this.success({data, followData});
     }
 }

@@ -2,7 +2,10 @@
   <nav>
     <v-app-bar app color="teal lighten-3">
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" class="grey--text"></v-app-bar-nav-icon>
-      <v-toolbar-title class="ch">最完美的故事就是由你亲手写下结局</v-toolbar-title>
+
+      <v-toolbar-title class="ch">
+        <a  href="/" style="text-decoration:none;color:black">最完美的故事就是由你亲手写下结局</a>
+        </v-toolbar-title>
 
       <v-spacer></v-spacer>
 

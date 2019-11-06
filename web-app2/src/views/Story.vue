@@ -32,7 +32,7 @@
         </template>
       </v-list>
       <v-container class="max-width">
-        <v-pagination v-model="page" class="my-4" :length="total" :total-visible="7" circle @input="pageInput"></v-pagination>
+        <v-pagination v-model="page" class="my-4" :length="totalPages" :total-visible="5" circle @input="pageInput"></v-pagination>
       </v-container>
     </v-container>
   </div>
@@ -49,7 +49,7 @@ export default {
       follows: [],
       page: 1,
       perPage: 10,
-      total: 10
+      totalPages: 10
     };
   },
   components: {
@@ -72,8 +72,9 @@ export default {
       .get(this.actionUrl, { params: { id: this.$route.params.id , page: this.page, perPage: this.perPage} })
       .then(res => {
         this.data = res.data.data.data;
-        this.follows = res.data.data.followList;
-        // console.log("=====", res);
+        const followData = res.data.data.followData;
+        this.follows = followData.data;
+        this.totalPages = followData.totalPages;
       });
     },
     pageInput(page){
