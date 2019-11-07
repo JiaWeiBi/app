@@ -2,13 +2,15 @@
   <div>
     <v-container>
       <v-row>
-        <div v-if="data && data.user">
-          <v-avatar>
-            <img :src="data.user.avatarUrl" />
-          </v-avatar>
-          <strong v-html="data.user.nickname" style="padding: 10px"></strong>
-          <!-- <span class="title font-weight-light">{{data.user.nickname}}</span> -->
-        </div>
+      <div v-if="data && data.user" style="width:100%">
+        <v-avatar>
+          <img :src="data.user.avatarUrl" />
+        </v-avatar>
+        <strong v-html="data.user.nickname" style="padding: 10px"></strong>
+        <v-btn class="ma-2 float-right" color="green darken-2" dark>
+          <v-icon dark left>mdi-arrow-up</v-icon>返回
+        </v-btn>
+      </div>
       </v-row>
       <v-row>
         <div v-if="data && data.content">
@@ -32,7 +34,14 @@
         </template>
       </v-list>
       <v-container class="max-width">
-        <v-pagination v-model="page" class="my-4" :length="totalPages" :total-visible="5" circle @input="pageInput"></v-pagination>
+        <v-pagination
+          v-model="page"
+          class="my-4"
+          :length="totalPages"
+          :total-visible="5"
+          circle
+          @input="pageInput"
+        ></v-pagination>
       </v-container>
     </v-container>
   </div>
@@ -67,17 +76,23 @@ export default {
     this.doSearch();
   },
   methods: {
-    doSearch(){
+    doSearch() {
       this.axios
-      .get(this.actionUrl, { params: { id: this.$route.params.id , page: this.page, perPage: this.perPage} })
-      .then(res => {
-        this.data = res.data.data.data;
-        const followData = res.data.data.followData;
-        this.follows = followData.data;
-        this.totalPages = followData.totalPages;
-      });
+        .get(this.actionUrl, {
+          params: {
+            id: this.$route.params.id,
+            page: this.page,
+            perPage: this.perPage
+          }
+        })
+        .then(res => {
+          this.data = res.data.data.data;
+          const followData = res.data.data.followData;
+          this.follows = followData.data;
+          this.totalPages = followData.totalPages;
+        });
     },
-    pageInput(page){
+    pageInput(page) {
       this.doSearch();
     }
   }
