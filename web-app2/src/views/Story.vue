@@ -1,16 +1,22 @@
 <template>
   <div>
     <v-container>
-      <v-row>
-      <div v-if="data && data.user" style="width:100%">
-        <v-avatar>
-          <img :src="data.user.avatarUrl" />
-        </v-avatar>
-        <strong v-html="data.user.nickname" style="padding: 10px"></strong>
-        <v-btn class="ma-2 float-right" color="green darken-2" dark>
-          <v-icon dark left>mdi-arrow-up</v-icon>返回
+      <v-row  >
+        <v-btn class="ma-2" color="green darken-2" dark>
+          <v-icon dark left>mdi-arrow-left</v-icon>返回
         </v-btn>
-      </div>
+        <v-spacer></v-spacer>
+         <v-btn class="ma-2" color="green darken-2" dark>
+            <v-icon dark left>mdi-arrow-up</v-icon>前篇
+          </v-btn>
+      </v-row>
+      <v-row>
+        <div v-if="data && data.user">
+          <v-avatar>
+            <img :src="data.user.avatarUrl" />
+          </v-avatar>
+          <strong v-html="data.user.nickname" style="padding: 10px"></strong>
+        </div>
       </v-row>
       <v-row>
         <div v-if="data && data.content">
@@ -20,7 +26,7 @@
       <v-divider></v-divider>
       <v-list three-line>
         <template v-for="(item,index) in follows">
-          <v-list-item :key="item.title" link :href="item.commentId">
+          <v-list-item :key="item.title" link :href="item.commentId" :click="nextClick">
             <v-list-item-avatar>
               <v-img :src="item.user.avatarUrl"></v-img>
             </v-list-item-avatar>
@@ -94,6 +100,9 @@ export default {
     },
     pageInput(page) {
       this.doSearch();
+    },
+    nextClick(data){
+      alert('====');
     }
   }
 };
