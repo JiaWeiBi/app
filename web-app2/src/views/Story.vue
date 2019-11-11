@@ -2,11 +2,11 @@
   <div>
     <v-container>
       <v-row  >
-        <v-btn class="ma-2" color="green darken-2" dark>
+        <v-btn class="ma-2" color="green darken-2" dark @click="goBack">
           <v-icon dark left>mdi-arrow-left</v-icon>返回
         </v-btn>
         <v-spacer></v-spacer>
-         <v-btn class="ma-2" color="green darken-2" dark>
+         <v-btn class="ma-2" color="green darken-2" dark @click="lastClick">
             <v-icon dark left>mdi-arrow-up</v-icon>前篇
           </v-btn>
       </v-row>
@@ -26,7 +26,7 @@
       <v-divider></v-divider>
       <v-list three-line>
         <template v-for="(item,index) in follows">
-          <v-list-item :key="item.title" link :href="item.commentId" :click="nextClick">
+          <v-list-item :key="item.title" link :href="item.commentId">
             <v-list-item-avatar>
               <v-img :src="item.user.avatarUrl"></v-img>
             </v-list-item-avatar>
@@ -72,13 +72,7 @@ export default {
     waterFall
   },
   mounted: function() {
-    // this.axios
-    //   .get(this.actionUrl, { params: { id: this.$route.params.id } })
-    //   .then(res => {
-    //     this.data = res.data.data.data;
-    //     this.follows = res.data.data.followList;
-    //     // console.log("=====", res);
-    //   });
+    this.page = parseInt(this.$route.query.page || 1);
     this.doSearch();
   },
   methods: {
@@ -100,9 +94,15 @@ export default {
     },
     pageInput(page) {
       this.doSearch();
+      this.$router.replace({path: this.$route.path, query:{
+        page
+      }}).catch(err => {err})
     },
-    nextClick(data){
-      alert('====');
+    lastClick(data){
+      this.$router.push({path: `/story/${this.data.beReplied[0].beRepliedCommentId}`}).catch(err => {err})
+    },
+    goBack(data){
+      this.$router.go(-1)
     }
   }
 };
