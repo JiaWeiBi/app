@@ -4,7 +4,7 @@
       <v-avatar>
         <img :src="item.user.avatarUrl" />
       </v-avatar>
-      <span class="title font-weight-light">{{item.user.nickname}}</span>
+      <span class="title font-weight-light pl-2">{{item.user.nickname}}</span>
     </v-card-title>
 
     <v-card-text class="ch">{{item.content}}</v-card-text>
