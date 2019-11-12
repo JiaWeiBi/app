@@ -1,5 +1,5 @@
 <template>
-  <v-card class="mx-auto" :elevation="24" color="#26c6da" dark max-width="400" @click="click">
+  <v-card class="mx-auto" :elevation="24" color="#747d8c" dark max-width="400" @click="click">
     <v-card-title>
       <v-avatar>
         <img :src="item.user.avatarUrl" />

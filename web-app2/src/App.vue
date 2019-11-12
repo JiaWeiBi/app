@@ -1,5 +1,5 @@
 <template>
-  <v-app class="grey lighten-4">
+  <v-app style="background-image: linear-gradient(to top, #ebbba7 0%, #cfc7f8 100%);">
     <Navbar />
 
     <v-content class="mx-4 mb-4">
@@ -23,7 +23,7 @@ export default {
 </script>
 
 <style>
-
+/* 
 @font-face {
   font-family: "font1";
   src: url("./assets/fonts/HYLiGuoXingXingKaiW.ttf") format("truetype");
@@ -50,5 +50,5 @@ export default {
 @font-face {
   font-family: "font6";
   src: url("./assets/fonts/anjingchenxingshu.otf");
-}
+} */
 </style>

@@ -24,9 +24,10 @@
         </div>
       </v-row>
       <v-divider></v-divider>
+      <div v-if="follows.length">
       <v-list three-line>
         <template v-for="(item,index) in follows">
-          <v-list-item :key="item.title" link :href="item.commentId">
+          <v-list-item :key="item.title" link :href="item.commentId" style="background-image: linear-gradient(to right, #eea2a2 0%, #bbc1bf 19%, #57c6e1 42%, #b49fda 79%, #7ac5d8 100%);">
             <v-list-item-avatar>
               <v-img :src="item.user.avatarUrl"></v-img>
             </v-list-item-avatar>
@@ -49,6 +50,7 @@
           @input="pageInput"
         ></v-pagination>
       </v-container>
+      </div>
     </v-container>
   </div>
 </template>
