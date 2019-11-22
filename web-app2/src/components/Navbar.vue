@@ -47,9 +47,7 @@
       <div v-else style="height: 100%">
         <v-list-item :class="'d-flex align-center'" style="height: 100%">
           <v-list-item-content>
-            <v-btn color="warning"  dark>
-              <v-icon>mdi-account-circle</v-icon>登录
-            </v-btn>
+            <Login></Login>
           </v-list-item-content>
         </v-list-item>
       </div>
@@ -58,12 +56,22 @@
 </template>
 
 <script>
+import Login from "./Login"
+
 export default {
-  components: {},
+  components: {
+    Login
+  },
   data() {
     return {
       drawer: false
+      ,isLogin: false
     };
+  },
+  methods: {
+    showLogin(){
+      this.isLogin = !this.isLogin;
+    }
   }
 };
 </script>
