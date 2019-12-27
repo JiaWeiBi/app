@@ -34,7 +34,7 @@ export default {
   computed: {},
   methods: {
     loadMore() {
-      this.dataList = this.dataList.concat(this.dataList);
+      // this.dataList = this.dataList.concat(this.dataList);
       // alert("loadMore");
     }
   }
