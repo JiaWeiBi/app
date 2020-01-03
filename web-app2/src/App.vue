@@ -58,4 +58,9 @@ export default {
   font-family: "font6";
   src: url("./assets/fonts/anjingchenxingshu.otf");
 } */
+
+@font-face {
+  font-family: "font5";
+  src: url("./assets/fonts/FZZJ-ZMJXLBXSJW.TTF") format("truetype");
+}
 </style>

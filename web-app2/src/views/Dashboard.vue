@@ -2,7 +2,7 @@
   <div class="dashboard" style="height:100%;">
     <!-- <h1 class="subheading grey--text">Dashboard</h1> -->
 
-    <waterFall v-on:load-more="loadMore">
+    <waterFall :checkScroll="false">
       <template v-slot:content>
         <Card v-for="(item,index) in dataList" :item="item" :key="index" class="card"></Card>
       </template>
@@ -18,14 +18,13 @@ export default {
   data() {
     return {
       actionUrl: '/api/home/home/storyList',
-      dataList: []
+      dataList: [],
+      page: 1
     };
   },
   created() {},
   mounted() {
-    this.axios.get(this.actionUrl).then((res)=>{
-      this.dataList = res.data.data;
-    })
+    this.doSearch();
   },
   components: {
     Card,
@@ -33,9 +32,18 @@ export default {
   },
   computed: {},
   methods: {
+    doSearch(){
+      this.axios.get(this.actionUrl, {
+      params:{
+        page: this.page
+      }
+      }).then((res)=>{
+      this.dataList = res.data.data;
+    })
+    },
     loadMore() {
-      // this.dataList = this.dataList.concat(this.dataList);
-      // alert("loadMore");
+      this.page++;
+      this.doSearch();
     }
   }
 };
