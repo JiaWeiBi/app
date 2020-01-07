@@ -1,6 +1,6 @@
-<template>
+<template xmlns:v-slot="http://www.w3.org/1999/XSL/Transform">
   <div class="dashboard" style="height:100%;">
-    <!-- <h1 class="subheading grey--text">Dashboard</h1> -->
+     <h1 class="subheading grey--text">Dashboard</h1>
 
     <waterFall :checkScroll="false">
       <template v-slot:content>
