@@ -1,72 +1,66 @@
 <template>
-  <div class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        nuxtApp
-      </h1>
-      <h2 class="subtitle">
-        My fantabulous Nuxt.js project
-      </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green"
-        >
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
-    </div>
-  </div>
+  <v-app style="background-image: linear-gradient(to top, #ebbba7 0%, #cfc7f8 100%);">
+    <Navbar />
+
+    <v-content class="mx-4 mb-4">
+      <router-view :key="this.$route.path"></router-view>
+    </v-content>
+
+    <v-footer padless absolute>
+      <v-col class="text-center" cols="12">
+        <a href="http://beian.miit.gov.cn" style="text-decoration:none">粤ICP备19018416号</a> —
+        <strong>舍颜</strong>
+      </v-col>
+    </v-footer>
+  </v-app>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
+import Navbar from "../components/Navbar";
 
 export default {
+  name: "App",
   components: {
-    Logo
-  }
-}
+    Navbar
+  },
+  data: () => ({
+    //
+  })
+};
 </script>
 
 <style>
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+/* 
+@font-face {
+  font-family: "font1";
+  src: url("./assets/fonts/HYLiGuoXingXingKaiW.ttf") format("truetype");
 }
 
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
+@font-face {
+  font-family: "font2";
+  src: url("./assets/fonts/fangzheng.ttf") format("truetype");
 }
 
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
+@font-face {
+  font-family: "font3";
+  src: url("./assets/fonts/FZQDJW.TTF") format("truetype");
+}
+@font-face {
+  font-family: "font4";
+  src: url("./assets/fonts/FZQTJW.TTF") format("truetype");
+}
+@font-face {
+  font-family: "font5";
+  src: url("./assets/fonts/FZZJ-ZMJXLBXSJW.TTF") format("truetype");
 }
 
-.links {
-  padding-top: 15px;
+@font-face {
+  font-family: "font6";
+  src: url("./assets/fonts/anjingchenxingshu.otf");
+} */
+
+@font-face {
+  font-family: "font5";
+  src: url("../assets/fonts/FZZJ-ZMJXLBXSJW.TTF") format("truetype");
 }
 </style>
