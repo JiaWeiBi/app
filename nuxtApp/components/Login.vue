@@ -1,11 +1,11 @@
 <template>
   <v-card>
-    <v-tabs v-model="tab" fixed-tabs>
+    <v-col v-model="tab" fixed-tabs>
       <v-tab class="ml-0">登录</v-tab>
       <v-tab>注册</v-tab>
-    </v-tabs>
+    </v-col>
 
-    <v-tabs-items v-model="tab">
+    <v-col-items v-model="tab">
       <v-tab-item :key="'login'">
         <v-card flat>
           <v-form ref="form" v-model="valid" :lazy-validation="lazy">
@@ -52,7 +52,7 @@
           </v-form>
         </v-card>
       </v-tab-item>
-    </v-tabs-items>
+    </v-col-items>
   </v-card>
 </template>
 <script>

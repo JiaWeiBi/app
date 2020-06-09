@@ -1,6 +1,6 @@
 <template>
   <v-app style="background-image: linear-gradient(to top, #ebbba7 0%, #cfc7f8 100%);">
-    <!-- <Navbar /> -->
+    <Navbar />
 
     <!-- <v-content class="mx-4 mb-4">
       <router-view :key="this.$route.path"></router-view>

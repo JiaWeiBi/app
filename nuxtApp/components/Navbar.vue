@@ -1,62 +1,98 @@
 <template>
   <nav>
-    <v-app-bar app color="#a4b0be">
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" class="grey--text"></v-app-bar-nav-icon>
+    <v-app-bar app flat>
+      <!-- <v-container class="lighten-5"> -->
+      <!-- <v-layout>
+          <v-img
+            src="/logo.png"
+            class="mr-5"
+            contain
+            style="cursor:pointer;"
+            height="48"
+            width="48"
+            max-width="48"
+            @click="home()"
+          />
+          <span class="my-auto title text-no-wrap" style="color:#2A5082;">文豪野犬</span>
+          <v-tabs id="app-bar-tabs" background-color="transparent" class="ml-12">
+            <v-tab class="ml-0 hidden-sm-and-down subtitle-1" @click="$router.push('/')">首页</v-tab>
+            <v-tab class="ml-0 hidden-sm-and-down subtitle-1" @click="$router.push('/explore')">文笔</v-tab>
+            <v-tab class="ml-0 hidden-sm-and-down subtitle-1" @click="$router.push('/explore')">书写</v-tab>
+            <v-tab
+              v-if="name"
+              class="ml-0 hidden-sm-and-down subtitle-1"
+              @click="$router.push('/link')"
+            >友链</v-tab>
+            <v-tab class="ml-0 hidden-sm-and-down subtitle-1" @click="$router.push('/about')">关于</v-tab>
+          </v-tabs>
+          <v-btn icon color="gray" @click="$router.push('/search')">
+            <v-icon>fa-search</v-icon>
+          </v-btn>
 
-      <v-toolbar-title class="ch">
-        <a href="/" style="text-decoration:none;color:black">最完美的故事就是由你亲手写下结局</a>
-      </v-toolbar-title>
+          <v-btn v-if="!name" class="ml-auto my-auto" text @click="login = true">登录</v-btn>
+          <v-btn v-if="!name" class="ml-1 my-auto" color="primary" @click="register = true">注册</v-btn>
 
-      <v-spacer></v-spacer>
+          <v-menu v-if="name" open-on-hover offset-y>
+            <template v-slot:activator="{ on }">
+              <v-avatar class="ml-6 my-auto pr-2" size="36" style="cursor:pointer;">
+                <img v-on="on" :src="user.profile_pic" :alt="user.name" />
+              </v-avatar>
+            </template>
+            <v-list>
+              <v-list-item @click="$router.push('/setting/account')">
+                <v-list-item-title>设置</v-list-item-title>
+              </v-list-item>
+              <v-list-item @click="$router.push('/follow')">
+                <v-list-item-title>关注列表</v-list-item-title>
+              </v-list-item>
+              <v-list-item @click="$router.push('/myarticle')">
+                <v-list-item-title>我的文章</v-list-item-title>
+              </v-list-item>
+              <v-list-item @click="$router.push('/edit')">
+                <v-list-item-title>发表文章</v-list-item-title>
+              </v-list-item>
+              <v-list-item @click="$router.push('/mycomment')">
+                <v-list-item-title>我的评论</v-list-item-title>
+              </v-list-item>
+              <v-list-item @click="logout">
+                <v-list-item-title>退出</v-list-item-title>
+              </v-list-item>
+            </v-list>
+          </v-menu>
+       
+      </v-layout>-->
+      <v-container>
+        <v-row>
+          <v-img
+            src="/logo.png"
+            class="mr-5"
+            contain
+            style="cursor:pointer;"
+            height="48"
+            width="48"
+            max-width="48"
+            @click="home()"
+          />
+          <span class="my-auto title text-no-wrap" style="color:#2A5082;">文豪野犬</span>
 
-      <v-btn icon>
-        <v-icon>mdi-magnify</v-icon>
-      </v-btn>
-
-      <v-btn icon>
-        <v-icon>mdi-dots-vertical</v-icon>
-      </v-btn>
+          <v-col>
+            <span class="my-auto ml-12 hidden-sm-and-down subtitle-1">首页</span>
+            <span class="my-auto ml-12 hidden-sm-and-down subtitle-1">XXX</span>
+            <span class="my-auto ml-12 hidden-sm-and-down subtitle-1">XXX</span>
+          </v-col>
+          
+            <span class="my-auto ml-12 hidden-sm-and-down subtitle-1">登陆</span>
+            <span class="my-auto ml-12 hidden-sm-and-down subtitle-1">注册</span>
+          
+        </v-row>
+      </v-container>
+      <!-- </v-container> -->
     </v-app-bar>
-
-    <v-navigation-drawer app v-model="drawer" color="#786fa6">
-      <div v-if="this.Global.userInfo">
-        <v-list-item>
-          <v-list-item-avatar>
-            <v-img src="this.Global.userInfo.avatarUrl"></v-img>
-          </v-list-item-avatar>
-
-          <v-list-item-content>
-            <v-list-item-title>{{this.Global.userInfo.userName}}</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-
-        <v-divider></v-divider>
-
-        <!-- <v-list dense>
-        <v-list-item v-for="item in items" :key="item.title" link>
-          <v-list-item-icon>
-            <v-icon>{{ item.icon }}</v-icon>
-          </v-list-item-icon>
-
-          <v-list-item-content>
-            <v-list-item-title>{{ item.title }}</v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-        </v-list>-->
-      </div>
-      <div v-else style="height: 100%">
-        <v-list-item :class="'d-flex align-center'" style="height: 100%">
-          <v-list-item-content>
-            <Login></Login>
-          </v-list-item-content>
-        </v-list-item>
-      </div>
-    </v-navigation-drawer>
   </nav>
 </template>
 
 <script>
-import Login from "./Login"
+import Login from "./Login";
 
 export default {
   components: {
@@ -64,12 +100,11 @@ export default {
   },
   data() {
     return {
-      drawer: false
-      ,isLogin: false
+      justify: ["start", "center", "space-around"]
     };
   },
   methods: {
-    showLogin(){
+    showLogin() {
       this.isLogin = !this.isLogin;
     }
   }
