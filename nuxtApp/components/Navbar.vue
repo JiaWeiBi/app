@@ -3,11 +3,11 @@
     <nav>
       <v-app-bar app flat>
         <v-container>
-          <v-row>
+          <v-row class="d-flex flex-nowrap">
             <nuxt-link to="/" class="ml-auto my-auto">
               <v-img
                 src="/logo.png"
-                class="mr-5"
+                class="mr-1"
                 contain
                 style="cursor:pointer;"
                 height="48"
@@ -15,15 +15,15 @@
                 max-width="48"
               />
             </nuxt-link>
-            <nuxt-link to="/" class="ml-auto my-auto nav-a">
+            <nuxt-link to="/" class=" my-auto">
               <span class="my-auto title text-no-wrap" style="color:#2A5082;">文豪野犬</span>
             </nuxt-link>
 
-            <v-col class="ml-12">
+            <v-col class="ml-12 d-none d-sm-flex d-md-flex">
               <v-tabs background-color="rgba(0, 0, 0, 0)">
                 <v-tab v-for="(item, index) in navList" :key="item.url+index">
                   <nuxt-link :to="item.url">
-                    <span class="my-auto ml-auto hidden-sm-and-down subtitle-1">{{ item.name }}</span>
+                    <span class="my-auto ml-auto subtitle-1">{{ item.name }}</span>
                   </nuxt-link>
                 </v-tab>
               </v-tabs>
@@ -31,8 +31,8 @@
             <v-btn icon class="ml-auto my-auto">
               <v-icon>mdi-magnify</v-icon>
             </v-btn>
-            <v-btn class="ml-auto my-auto" text color="deep-purple accent-4">登陆</v-btn>
-            <v-btn class="ml-auto my-auto" text color="deep-purple accent-4">注册</v-btn>
+            <v-btn class="my-auto" text color="deep-purple accent-4">登陆</v-btn>
+            <v-btn class="my-auto" text color="deep-purple accent-4">注册</v-btn>
           </v-row>
         </v-container>
       </v-app-bar>
