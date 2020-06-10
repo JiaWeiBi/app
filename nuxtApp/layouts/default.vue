@@ -1,13 +1,33 @@
 <template>
   <div>
-    <nuxt />
+    <!-- background-image: linear-gradient(to top, #ebbba7 0%, #cfc7f8 100%); -->
+    <v-app style="">
+      <Navbar />
+      <v-content app>
+        <nuxt />
+      </v-content>
+      <v-footer padless absolute color="#033">
+        <v-col class="text-center" cols="12">
+          <a href="http://beian.miit.gov.cn" style="text-decoration:none">粤ICP备19018416号</a> —
+          <strong>文豪野犬</strong>
+        </v-col>
+      </v-footer>
+    </v-app>
   </div>
 </template>
 
+<script>
+import Navbar from "~/components/Navbar.vue";
+export default {
+  components: {
+    Navbar
+  }
+};
+</script>
 <style>
 html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, "Helvetica Neue", Arial, sans-serif;
   font-size: 16px;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;

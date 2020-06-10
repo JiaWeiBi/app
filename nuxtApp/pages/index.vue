@@ -1,28 +1,28 @@
 <template>
-  <v-app style="background-image: linear-gradient(to top, #ebbba7 0%, #cfc7f8 100%);">
-    <Navbar />
-
-    <!-- <v-content class="mx-4 mb-4">
-      <router-view :key="this.$route.path"></router-view>
-    </v-content> -->
-
-    <v-footer padless absolute>
-      <v-col class="text-center" cols="12">
-        <a href="http://beian.miit.gov.cn" style="text-decoration:none">粤ICP备19018416号</a> —
-        <strong>舍颜</strong>
-      </v-col>
-    </v-footer>
-  </v-app>
+  <div>
+    <v-container>
+      <v-banner >
+        <v-avatar slot="icon" color="deep-purple accent-4" size="40">
+          <v-icon icon="mdi-lock" color="white">mdi-lock</v-icon>
+        </v-avatar>
+        <span>最完美的故事，就是由你亲手写下结局</span>
+        <template v-slot:actions>
+          <v-btn text color="deep-purple accent-4">Action</v-btn>
+          <v-btn text color="deep-purple accent-4">Action</v-btn>
+        </template>
+      </v-banner>
+      <v-btn text small disabled>Disabled</v-btn>
+    </v-container>
+  </div>
 </template>
 
 <script>
-import Navbar from "../components/Navbar";
+// import Navbar from "../components/Navbar";
 
 export default {
-  name: "App",
-  components: {
-    Navbar
-  },
+  name: "index",
+  layout: "default",
+  components: {},
   data: () => ({
     //
   })
