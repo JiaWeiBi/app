@@ -20,7 +20,7 @@
             </nuxt-link>
 
             <v-col class="ml-12">
-              <v-tabs color="black">
+              <v-tabs background-color="rgba(0, 0, 0, 0)">
                 <v-tab v-for="(item, index) in navList" :key="item.url+index">
                   <nuxt-link :to="item.url">
                     <span class="my-auto ml-auto hidden-sm-and-down subtitle-1">{{ item.name }}</span>
