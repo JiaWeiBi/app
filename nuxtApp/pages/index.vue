@@ -1,17 +1,15 @@
 <template>
   <div>
     <v-container>
-      <v-banner >
-        <v-avatar slot="icon" color="deep-purple accent-4" size="40">
-          <v-icon icon="mdi-lock" color="white">mdi-lock</v-icon>
-        </v-avatar>
-        <span>最完美的故事，就是由你亲手写下结局</span>
-        <template v-slot:actions>
-          <v-btn text color="deep-purple accent-4">Action</v-btn>
-          <v-btn text color="deep-purple accent-4">Action</v-btn>
-        </template>
-      </v-banner>
-      <v-btn text small disabled>Disabled</v-btn>
+      <v-card color="#385F73" dark >
+        <v-card-title class="headline">最完美的故事 就是由你亲手写下结局</v-card-title>
+
+        <v-card-subtitle>Listen to your favorite artists and albums whenever and wherever, online and offline.</v-card-subtitle>
+
+        <v-card-actions>
+          <v-btn text>开始创作</v-btn>
+        </v-card-actions>
+      </v-card>
     </v-container>
   </div>
 </template>

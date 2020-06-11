@@ -15,18 +15,21 @@
                 max-width="48"
               />
             </nuxt-link>
-            <nuxt-link to="/" class=" my-auto">
+            <nuxt-link to="/" class="my-auto">
               <span class="my-auto title text-no-wrap" style="color:#2A5082;">文豪野犬</span>
             </nuxt-link>
 
             <v-col class="ml-12 d-none d-sm-flex d-md-flex">
-              <v-tabs background-color="rgba(0, 0, 0, 0)">
-                <v-tab v-for="(item, index) in navList" :key="item.url+index">
-                  <nuxt-link :to="item.url">
-                    <span class="my-auto ml-auto subtitle-1">{{ item.name }}</span>
-                  </nuxt-link>
-                </v-tab>
-              </v-tabs>
+              <nuxt-link
+                class="my-auto"
+                :to="item.url"
+                v-for="(item, index) in navList"
+                :key="item.url+index"
+              >
+                <v-btn text color="primary">
+                  <span class="my-auto mx-auto subtitle-1">{{ item.name }}</span>
+                </v-btn>
+              </nuxt-link>
             </v-col>
             <v-btn icon class="ml-auto my-auto">
               <v-icon>mdi-magnify</v-icon>
@@ -50,16 +53,27 @@ export default {
   data() {
     return {
       navList: [
-        { name: "首页", url: "/index" },
+        { name: "首页", url: "/home" },
         { name: "XXX", url: "/xxx" },
         { name: "XXX", url: "/xxx" }
       ],
-      justify: ["start", "center", "space-around"]
+      pageValue: null
     };
+  },
+  watch: {
+    pageValue: function(newValue, oldValue) {
+      console.log("===", newValue, oldValue);
+    }
+    // $route(to, from) {
+    //   console.log(to.path)
+    // }
   },
   methods: {
     showLogin() {
       this.isLogin = !this.isLogin;
+    },
+    home() {
+      this.pageValue = null;
     }
   }
 };
