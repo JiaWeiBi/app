@@ -7,7 +7,7 @@
         <v-card-subtitle>Listen to your favorite artists and albums whenever and wherever, online and offline.</v-card-subtitle>
 
         <v-card-actions>
-          <v-btn text>开始创作</v-btn>
+          <v-btn text outlined>开始创作</v-btn>
         </v-card-actions>
       </v-card>
     </v-container>
@@ -20,6 +20,11 @@
 export default {
   name: "index",
   layout: "default",
+  head(){
+    return {
+      title: "文豪野犬"
+    };
+  },
   components: {},
   data: () => ({
     //
