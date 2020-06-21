@@ -6,7 +6,7 @@
       <v-content app>
         <nuxt />
       </v-content>
-      <v-footer padless absolute color="#033">
+      <v-footer padless app absolute color="#033">
         <v-col class="text-center" cols="12">
           <a href="http://beian.miit.gov.cn" style="text-decoration:none">粤ICP备19018416号</a> —
           <strong>文豪野犬</strong>

@@ -28,6 +28,7 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
+    '~/plugins/axios'
   ],
   /*
   ** Nuxt.js dev-modules
@@ -43,6 +44,16 @@ module.exports = {
   ],
   axios: {
     // proxyHeaders: false
+    proxy: true,
+    prefix: '/api'
+    // baseURL: 'http://127.0.0.1:8360/api',
+    // browserBaseURL: 'http://127.0.0.1:8360/api'
+  },
+  proxy:{
+    '/api': {
+      target: 'http://localhost:8360',
+      changeOrigin: true,
+    },
   },
   /*
   ** Build configuration
