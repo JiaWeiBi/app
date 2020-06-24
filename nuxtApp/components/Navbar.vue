@@ -34,12 +34,17 @@
             <v-btn icon class="ml-auto my-auto">
               <v-icon>mdi-magnify</v-icon>
             </v-btn>
-            <v-btn class="my-auto" text color="deep-purple accent-4">登陆</v-btn>
-            <v-btn class="my-auto" text color="deep-purple accent-4">注册</v-btn>
+            <!-- <nuxt-link to="/user/login" class="my-auto"> -->
+            <v-btn class="my-auto" text color="deep-purple accent-4"  @click="showLogin = true">登陆</v-btn>
+            <!-- </nuxt-link> -->
+            <nuxt-link to="/user/register" class="my-auto">
+              <v-btn class="my-auto" text color="deep-purple accent-4">注册</v-btn>
+            </nuxt-link>
           </v-row>
         </v-container>
       </v-app-bar>
     </nav>
+    <login v-if="showLogin" @close="close"></login>
   </div>
 </template>
 
@@ -57,6 +62,7 @@ export default {
         { name: "XXX", url: "/xxx" },
         { name: "XXX", url: "/xxx" }
       ],
+      showLogin: false,
       pageValue: null
     };
   },
@@ -69,11 +75,11 @@ export default {
     // }
   },
   methods: {
-    showLogin() {
-      this.isLogin = !this.isLogin;
-    },
     home() {
       this.pageValue = null;
+    },
+    close(){
+      this.showLogin = false;
     }
   }
 };

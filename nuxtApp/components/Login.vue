@@ -1,59 +1,45 @@
 <template>
-  <v-card>
-    <v-col v-model="tab" fixed-tabs>
-      <v-tab class="ml-0">登录</v-tab>
-      <v-tab>注册</v-tab>
-    </v-col>
+  <div>
+    <v-overlay dark="false">
+      <v-container class="fill-height" fluid cols="12">
+        <v-row align="center" justify="center">
+          <v-col cols="12" sm="8" md="4">
+            <v-card class="elevation-12">
+              <v-toolbar color="primary" dark flat>
+                <v-toolbar-title>Login form</v-toolbar-title>
+                <v-spacer></v-spacer>
+                <v-tooltip bottom>
+                  <template v-slot:activator="{ on }">
+                    <v-btn icon large target="_blank" v-on="on" @click="close">
+                      <v-icon>mdi-close</v-icon>
+                    </v-btn>
+                  </template>
+                  <span>Source</span>
+                </v-tooltip>
+              </v-toolbar>
+              <v-card-text>
+                <v-form>
+                  <v-text-field label="Login" name="login" prepend-icon="mdi-account" type="text"></v-text-field>
 
-    <v-col-items v-model="tab">
-      <v-tab-item :key="'login'">
-        <v-card flat>
-          <v-form ref="form" v-model="valid" :lazy-validation="lazy">
-            <v-text-field v-model="email" :rules="emailRules" label="邮箱" required></v-text-field>
-            <v-text-field
-              v-model="psw"
-              label="密码"
-              required
-              :append-icon="showPsw ? 'mdi-eye' : 'mdi-eye-off'"
-              :type="showPsw ? 'text' : 'password'"
-              @click:append="showPsw = !showPsw"
-            ></v-text-field>
-            <v-btn color="warning" dark block>
-              <v-icon>mdi-account-circle</v-icon>登录
-            </v-btn>
-          </v-form>
-        </v-card>
-      </v-tab-item>
-      <v-tab-item :key="'signIn'">
-        <v-card flat>
-          <v-form ref="form" v-model="valid" :lazy-validation="lazy">
-            <v-text-field v-model="name" :counter="10" :rules="nameRules" label="用户名" required></v-text-field>
-
-            <v-text-field v-model="email" :rules="emailRules" label="邮箱" required></v-text-field>
-            <v-text-field
-              v-model="psw"
-              label="密码"
-              required
-              :append-icon="showPsw ? 'mdi-eye' : 'mdi-eye-off'"
-              :type="showPsw ? 'text' : 'password'"
-              @click:append="showPsw = !showPsw"
-            ></v-text-field>
-            <v-text-field
-              v-model="psw"
-              label="确认密码"
-              required
-              :append-icon="showPsw ? 'mdi-eye' : 'mdi-eye-off'"
-              :type="showPsw ? 'text' : 'password'"
-              @click:append="showPsw = !showPsw"
-            ></v-text-field>
-            <v-btn color="warning" dark block>
-              <v-icon>mdi-account-circle</v-icon>注册
-            </v-btn>
-          </v-form>
-        </v-card>
-      </v-tab-item>
-    </v-col-items>
-  </v-card>
+                  <v-text-field
+                    id="password"
+                    label="Password"
+                    name="password"
+                    prepend-icon="mdi-lock"
+                    type="password"
+                  ></v-text-field>
+                </v-form>
+              </v-card-text>
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn color="primary">Login</v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-overlay>
+  </div>
 </template>
 <script>
 export default {
@@ -74,6 +60,11 @@ export default {
         v => /.+@.+\..+/.test(v) || "请输入正确的邮箱"
       ]
     };
+  },
+  methods: {
+    close() {
+      this.$emit("close");
+    }
   }
 };
 </script>
