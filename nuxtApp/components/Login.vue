@@ -1,6 +1,33 @@
 <template>
   <div>
-    <v-overlay dark="false">
+    <v-row justify="center">
+      <v-dialog v-model="dialog" persistent max-width="600px">
+        <v-card>
+          <v-card-title>
+            <span class="headline mx-auto">邮箱登陆</span>
+          </v-card-title>
+          <v-card-text>
+            <v-container>
+              <v-row>
+                <v-col cols="12">
+                  <v-text-field label="邮箱*" required></v-text-field>
+                </v-col>
+                <v-col cols="12">
+                  <v-text-field label="密码*" type="password" required></v-text-field>
+                </v-col>
+              </v-row>
+            </v-container>
+            <!-- <small>*indicates required field</small> -->
+          </v-card-text>
+          <v-card-actions>
+            <v-spacer></v-spacer>
+            <v-btn color="primary" @click="close">登陆</v-btn>
+            <v-btn color="primary" @click="close">取消</v-btn>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+    </v-row>
+    <!-- <v-overlay dark="false">
       <v-container class="fill-height" fluid cols="12">
         <v-row align="center" justify="center">
           <v-col cols="12" sm="8" md="4">
@@ -38,13 +65,14 @@
           </v-col>
         </v-row>
       </v-container>
-    </v-overlay>
+    </v-overlay>-->
   </div>
 </template>
 <script>
 export default {
   data() {
     return {
+      dialog: true,
       showPsw: false,
       tab: null,
       valid: true,
