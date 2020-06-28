@@ -3,9 +3,9 @@
     <v-row justify="center">
       <v-dialog v-model="dialog" persistent max-width="600px">
         <v-card>
-          <v-card-title>
-            <span class="headline mx-auto">邮箱登陆</span>
-          </v-card-title>
+            <v-toolbar color="primary" dark flat>
+            <v-toolbar-title>邮箱登陆</v-toolbar-title>
+          </v-toolbar>
           <v-card-text>
             <v-container>
               <v-row>
