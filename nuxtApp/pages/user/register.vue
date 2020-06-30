@@ -15,6 +15,7 @@
             <v-text-field
               label="昵称*"
               :rules="[rules.required, rules.nickname]"
+              v-model="form.nickName"
               outlined
               counter
               maxlength="20"
@@ -24,6 +25,7 @@
             <v-text-field
               label="邮箱*"
               :rules="[rules.required, rules.email]"
+              v-model="form.email"
               validate-on-blur
               outlined
             ></v-text-field>
@@ -32,6 +34,7 @@
             <v-text-field
               label="密码*"
               :rules="[rules.required, rules.password]"
+              v-model="form.psw"
               :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
               @click:append="show = !show"
               :type="show ? 'text' : 'password'"
@@ -61,6 +64,11 @@ export default {
   data() {
     return {
       show: false,
+      form: {
+          nickName: '',
+          email: null,
+          psw: null
+      },
       rules: {
         required: value => !!value || "必填项.",
         counter: value => value.length <= 20 || "最多20个字符",
@@ -86,7 +94,7 @@ export default {
   },
   methods: {
     register: async function() {
-      alert("===")
+      console.log(this.form)
     }
   }
 };
