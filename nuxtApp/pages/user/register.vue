@@ -1,6 +1,6 @@
 <template>
   <v-container class="fill-height" fluid>
-    <v-row align="center" justify="center">
+    <v-row align="center" justify="center" ref="form">
       <v-col cols="12" sm="8" md="6">
         <v-row>
           <v-col cols="12">
@@ -15,6 +15,8 @@
             <v-text-field
               label="昵称*"
               :rules="[rules.required, rules.nickname]"
+              ref="nickName"
+              :error-messages="nickMsg"
               v-model="form.nickName"
               outlined
               counter
@@ -26,6 +28,7 @@
               label="邮箱*"
               :rules="[rules.required, rules.email]"
               v-model="form.email"
+              ref="email"
               validate-on-blur
               outlined
             ></v-text-field>
@@ -35,13 +38,14 @@
               label="密码*"
               :rules="[rules.required, rules.password]"
               v-model="form.psw"
+              ref="psw"
               :append-icon="show ? 'mdi-eye' : 'mdi-eye-off'"
               @click:append="show = !show"
               :type="show ? 'text' : 'password'"
               validate-on-blur
               outlined
             ></v-text-field>
-            <span>*密码由6-12位字母、数字组合*</span>
+            <span>*密码由6-12位字母、数字组合(同时包含数字和字母)*</span>
           </v-col>
           <v-col cols="12">
             <v-row>
@@ -60,15 +64,17 @@
 </template>
 
 <script>
+import CryptoJS from "crypto-js";
 export default {
   data() {
     return {
       show: false,
       form: {
-          nickName: '',
-          email: null,
-          psw: null
+        nickName: "",
+        email: null,
+        psw: null
       },
+      nickMsg: [],
       rules: {
         required: value => !!value || "必填项.",
         counter: value => value.length <= 20 || "最多20个字符",
@@ -86,15 +92,37 @@ export default {
           const pattern = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
           return pattern.test(value) || "非法邮箱地址";
         },
-        nickname: async value => {
+        nickname: value => {
+          if (!value) {
+            return "必填项";
+          }
+          this.nickMsg = this.nickMsg || [];
+          const that = this;
+          setTimeout(() => {
+            that.nickMsg.push("123");
+          }, 2000);
+          setTimeout(() => {
+            that.nickMsg = [];
+          }, 4000);
+
           return true;
         }
       }
     };
   },
+  watch: {},
+  computed: {},
   methods: {
     register: async function() {
-      console.log(this.form)
+      let err = false;
+      Object.keys(this.form).forEach(f => {
+        if (!this.$refs[f].validate(true)) {
+          err = true;
+        }
+      });
+      if(err){
+        alert("按规定填写")
+      }
     }
   }
 };
