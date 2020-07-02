@@ -15,9 +15,9 @@
             <v-text-field
               label="昵称*"
               :rules="[rules.required, rules.nickname]"
-              ref="nickName"
+              ref="nickname"
               :error-messages="nickMsg"
-              v-model="form.nickName"
+              v-model="form.nickname"
               outlined
               counter
               maxlength="20"
@@ -47,6 +47,7 @@
             ></v-text-field>
             <span>*密码由6-12位字母、数字组合(同时包含数字和字母)*</span>
           </v-col>
+
           <v-col cols="12">
             <v-row>
               <v-btn color="warning" @click="register">注册</v-btn>
@@ -60,17 +61,24 @@
         </v-row>
       </v-col>
     </v-row>
+    <div ref="captcha"></div>
   </v-container>
 </template>
 
 <script>
 import CryptoJS from "crypto-js";
 export default {
+  head: {
+    script: [
+      { src: "https://cdn.dingxiang-inc.com/ctu-group/captcha-ui/index.js" }
+    ]
+  },
   data() {
     return {
+      actionUrl: "/user/user/signUp",
       show: false,
       form: {
-        nickName: "",
+        nickname: "",
         email: null,
         psw: null
       },
@@ -120,9 +128,20 @@ export default {
           err = true;
         }
       });
-      if(err){
-        alert("按规定填写")
+      if ((this.nickMsg && this.nickMsg.length != 0) || err) {
+        return;
       }
+      _dx.Captcha(this.$refs.captcha, {
+        appId: "7345783e510f7b34b3f2b05d6bc4caa5",
+        success: token => {
+          console.log(token);
+        }
+      });
+      let params = { ...this.form };
+      params.psw = CryptoJS.MD5(params.psw + "a2s3d4f").toString();
+
+      const res = await this.$axios.$post(this.actionUrl, params);
+      console.log(res);
     }
   }
 };
