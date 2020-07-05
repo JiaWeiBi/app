@@ -106,13 +106,7 @@ export default {
           }
           this.nickMsg = this.nickMsg || [];
           const that = this;
-          setTimeout(() => {
-            that.nickMsg.push("123");
-          }, 2000);
-          setTimeout(() => {
-            that.nickMsg = [];
-          }, 4000);
-
+         
           return true;
         }
       }
@@ -131,17 +125,20 @@ export default {
       if ((this.nickMsg && this.nickMsg.length != 0) || err) {
         return;
       }
-      _dx.Captcha(this.$refs.captcha, {
+      let p = _dx.Captcha(this.$refs.captcha, {
         appId: "7345783e510f7b34b3f2b05d6bc4caa5",
+        style: 'popup',
         success: token => {
           console.log(token);
         }
       });
+      p.show();
+
       let params = { ...this.form };
       params.psw = CryptoJS.MD5(params.psw + "a2s3d4f").toString();
 
-      const res = await this.$axios.$post(this.actionUrl, params);
-      console.log(res);
+    //   const res = await this.$axios.$post(this.actionUrl, params);
+    //   console.log(res);
     }
   }
 };
