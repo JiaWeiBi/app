@@ -130,6 +130,10 @@ export default {
         style: 'popup',
         success: token => {
           console.log(token);
+          p.hide();
+        },
+        fail: function(err){
+            p.reload();
         }
       });
       p.show();
