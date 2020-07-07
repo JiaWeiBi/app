@@ -125,24 +125,28 @@ export default {
       if ((this.nickMsg && this.nickMsg.length != 0) || err) {
         return;
       }
+       let params = { ...this.form };
+      params.psw = CryptoJS.MD5(params.psw + "a2s3d4f").toString();
+
+      
+    //   console.log(res);
       let p = _dx.Captcha(this.$refs.captcha, {
         appId: "7345783e510f7b34b3f2b05d6bc4caa5",
         style: 'popup',
-        success: token => {
-          console.log(token);
+        success: async token => {
           p.hide();
+          params.token = token;
+          const res = await this.$axios.$post(this.actionUrl, params);
+          await this.handleRegister(res);
         },
         fail: function(err){
             p.reload();
         }
       });
       p.show();
-
-      let params = { ...this.form };
-      params.psw = CryptoJS.MD5(params.psw + "a2s3d4f").toString();
-
-    //   const res = await this.$axios.$post(this.actionUrl, params);
-    //   console.log(res);
+    },
+    handleRegister: async function(res){
+      console.log('===', res)
     }
   }
 };
