@@ -12,8 +12,8 @@ export default function ({ $axios, redirect }) {
 
     $axios.onResponse(res => {
       console.log(res)
-      if(res.data.errno && res.data.errmsg){
-        alert(res.data.errmsg)
-      }
+      // if(res.data.errno && res.data.errmsg){
+      //   alert(res.data.errmsg)
+      // }
     })
   }

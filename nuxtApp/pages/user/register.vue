@@ -62,6 +62,17 @@
       </v-col>
     </v-row>
     <div ref="captcha"></div>
+    <v-snackbar v-model="snackbar" top color="error" :timeout="2000">{{ notice }}</v-snackbar>
+    <v-dialog v-model="dialog" persistent max-width="320">
+      <v-card>
+        <v-card-title class="headline text-center">{{notice}}</v-card-title>
+        <!-- <v-card-text class="my-auto mx-auto text-h6 text-center">{{notice}}</v-card-text> -->
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn tile outlined color="success" @click="dialog = false">确定</v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
   </v-container>
 </template>
 
@@ -77,6 +88,9 @@ export default {
     return {
       actionUrl: "/user/user/signUp",
       show: false,
+      snackbar: false,
+      dialog: false,
+      notice: "",
       form: {
         nickname: "",
         email: null,
@@ -106,7 +120,7 @@ export default {
           }
           this.nickMsg = this.nickMsg || [];
           const that = this;
-         
+
           return true;
         }
       }
@@ -125,28 +139,32 @@ export default {
       if ((this.nickMsg && this.nickMsg.length != 0) || err) {
         return;
       }
-       let params = { ...this.form };
+      let params = { ...this.form };
       params.psw = CryptoJS.MD5(params.psw + "a2s3d4f").toString();
 
-      
-    //   console.log(res);
       let p = _dx.Captcha(this.$refs.captcha, {
         appId: "7345783e510f7b34b3f2b05d6bc4caa5",
-        style: 'popup',
+        style: "popup",
         success: async token => {
           p.hide();
           params.token = token;
           const res = await this.$axios.$post(this.actionUrl, params);
           await this.handleRegister(res);
         },
-        fail: function(err){
-            p.reload();
+        fail: function(err) {
+          p.reload();
         }
       });
       p.show();
     },
-    handleRegister: async function(res){
-      console.log('===', res)
+    handleRegister: async function(res) {
+      if (res.errno) {
+        this.notice = res.errmsg;
+        // this.snackbar =true;
+      } else {
+        this.notice = "确认邮件已发送到您的注册邮箱中，请前往邮箱点击确认。";
+      }
+      this.dialog = true;
     }
   }
 };
