@@ -43,7 +43,7 @@ module.exports = class extends Base {
         const params = this.post();
         const userModel = this.mongo('user');
         const data = await userModel.getUserByNickName(params.nickname);
-        
+
         if(!think.isEmpty(data)){
             this.fail("用户名已存在")
         }else{

@@ -87,6 +87,7 @@ export default {
   data() {
     return {
       actionUrl: "/user/user/signUp",
+      checkNameUrl: "/user/user/checkNickName",
       show: false,
       snackbar: false,
       dialog: false,
@@ -120,7 +121,14 @@ export default {
           }
           this.nickMsg = this.nickMsg || [];
           const that = this;
-
+          this.$axios.$post(this.checkNameUrl, {nickname: value}).then(res => {
+            console.log(!!res.errno)
+            if(res.errno){
+              that.nickMsg.push(res.errmsg);
+            }else{
+              that.nickMsg=[];
+            }
+          })
           return true;
         }
       }

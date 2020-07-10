@@ -1,4 +1,10 @@
 module.exports = class extends think.Mongo {
+    /*
+    nickname: 昵称
+    email: 邮箱
+    psw: 密码
+    
+     */
     async addUser(user) {
         return this.add(user);
     }
