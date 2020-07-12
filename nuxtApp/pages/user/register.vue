@@ -122,7 +122,6 @@ export default {
           this.nickMsg = this.nickMsg || [];
           const that = this;
           this.$axios.$post(this.checkNameUrl, {nickname: value}).then(res => {
-            console.log(!!res.errno)
             if(res.errno){
               that.nickMsg.push(res.errmsg);
             }else{

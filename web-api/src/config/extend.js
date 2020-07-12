@@ -5,6 +5,7 @@ const session = require('think-session');
 const mongo = require('think-mongo');
 const dingxiang = require('../extend/dingxiang');
 const redis = require('../extend/redis');
+const helper = require('../extend/helper');
 
 module.exports = [
   view, // make application support view
@@ -13,5 +14,6 @@ module.exports = [
   session,
   mongo(think.app),
   dingxiang,
-  redis
+  redis,
+  helper
 ];

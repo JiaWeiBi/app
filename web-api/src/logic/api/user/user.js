@@ -32,7 +32,7 @@ module.exports = class extends baseLogic {
       if (!flag) {
          return this.fail('validate error', this.validateErrors);
       }
-      if (!(await this.ctx.checkCaptchaToken(this.post('token')))){
+      if (!(await this.ctx.checkCaptchaToken(this.post('token')))) {
          return this.fail('validate error', 'token校验失败');
       }
    }
@@ -51,4 +51,13 @@ module.exports = class extends baseLogic {
       }
    }
    logoutAction() { }
+   emailCheckAction() {
+      this.allowMethods = 'get';
+      this.rules = {
+         token: {
+            required: true,
+            string: true
+         }
+      }
+   }
 }

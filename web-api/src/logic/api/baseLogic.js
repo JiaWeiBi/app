@@ -2,6 +2,7 @@ module.exports = class extends think.Logic {
     async __before() {
         const list = [
             '/api/user/user/checkNickName'
+            ,'/api/user/user/emailCheck'
             , '/api/user/user/signUp'
             , '/api/user/user/login'
             , '/api/content/story/get'
